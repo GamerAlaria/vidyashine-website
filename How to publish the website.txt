@@ -1,0 +1,106 @@
+=====================================================
+  HOW TO PUBLISH THE WEBSITE (GO LIVE)
+=====================================================
+
+This guide explains how to deploy the Vidyashine website on Netlify,
+a free hosting platform. The project is already pre-configured for it.
+
+
+STEP 1: CREATE A GITHUB ACCOUNT (if you don't have one)
+--------------------------------------------------------
+1. Go to https://github.com/ and sign up for a free account.
+
+
+STEP 2: UPLOAD YOUR PROJECT TO GITHUB
+--------------------------------------
+1. Go to https://github.com/ and click the "+" icon -> "New repository"
+2. Name it something like "vidyashine" (keep it private if you want)
+3. Do NOT check "Add a README" (we already have one)
+4. Click "Create repository"
+5. On the next page, click "uploading an existing file" link
+6. Open your vidyashine project folder on your computer
+7. Select ALL the files and folders EXCEPT "node_modules" and drag them
+   into the GitHub upload area
+   (node_modules is very large and should NOT be uploaded)
+8. Scroll down, click "Commit changes"
+9. Done! Your project is now on GitHub.
+
+
+STEP 3: DEPLOY ON NETLIFY
+--------------------------
+1. Go to https://www.netlify.com/ and sign up (you can sign in with GitHub)
+2. Click "Add new site" -> "Import an existing project"
+3. Choose "GitHub" and authorize Netlify to access your repositories
+4. Select your "vidyashine" repository
+5. Netlify will auto-detect the settings (from the netlify.toml file):
+      Build command:    npm run build
+      Publish directory: dist
+6. Click "Deploy site"
+7. Wait 1-2 minutes for the build to complete
+
+
+STEP 4: ADD YOUR ENVIRONMENT VARIABLES ON NETLIFY
+--------------------------------------------------
+This is IMPORTANT — without this, the booking form won't work.
+
+1. In Netlify, go to: Site settings -> Environment variables
+2. Click "Add a variable" and add these two:
+
+   Key:   VITE_WEB3FORMS_ACCESS_KEY
+   Value: (paste your Web3Forms access key here)
+
+   Key:   VITE_SUPPORT_EMAIL
+   Value: (paste your support email here)
+
+3. After adding both, go to Deploys -> click "Trigger deploy" -> "Deploy site"
+   (This rebuilds the site with your environment variables)
+
+
+STEP 5: SET UP A CUSTOM DOMAIN (Optional)
+------------------------------------------
+By default, Netlify gives you a free URL like:
+   https://random-name-12345.netlify.app
+
+To use your own domain (e.g., www.vidyashineacademy.com):
+
+1. In Netlify, go to: Site settings -> Domain management
+2. Click "Add custom domain"
+3. Enter your domain name and follow the instructions
+4. You will need to update your domain's DNS settings:
+   - Go to where you purchased your domain (GoDaddy, Namecheap, etc.)
+   - Update the nameservers to the ones Netlify provides
+   - OR add the CNAME/A records Netlify shows you
+5. Wait up to 24 hours for DNS to propagate
+6. Netlify will automatically set up a free SSL certificate (HTTPS)
+
+
+UPDATING THE WEBSITE AFTER PUBLISHING
+--------------------------------------
+Once connected to GitHub, updating your live site is simple:
+
+1. Make your changes to the files on your computer
+2. Test locally by running "Start_Vidyashine.bat" to make sure everything looks good
+3. Go to your repository on GitHub (https://github.com/YOUR_USERNAME/vidyashine)
+4. Click "Add file" -> "Upload files"
+5. Drag and drop the files you changed into the upload area
+6. Scroll down and click "Commit changes"
+7. Netlify will automatically detect the update and rebuild your live site
+   (usually takes 1-2 minutes)
+
+
+ALTERNATIVE: DEPLOY WITHOUT GITHUB (Easiest Method)
+----------------------------------------------------
+If you don't want to use GitHub at all:
+
+1. Run "Start_Vidyashine.bat" to make sure the site works locally
+2. Close the server (Ctrl + C)
+3. Double-click "Start_Vidyashine.bat" one more time, then close it
+   — this ensures dependencies are installed
+4. Open Command Prompt in the project folder and type:  npm run build
+   This creates a "dist" folder with your ready-to-publish files
+5. Go to https://app.netlify.com/drop
+6. Drag and drop the entire "dist" folder onto that page
+7. Your site will be live instantly!
+
+NOTE: With this method, you will need to repeat steps 4-6
+every time you make changes to the website.

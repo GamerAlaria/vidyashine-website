@@ -1,0 +1,89 @@
+=====================================================
+  HOW TO PUBLISH THE WEBSITE ON CLOUDFLARE PAGES
+=====================================================
+
+This guide explains how to deploy the Vidyashine website on Cloudflare Pages,
+which is an excellent, fast, and free hosting platform.
+
+STEP 1: CREATE A GITHUB ACCOUNT (if you don't have one)
+--------------------------------------------------------
+1. Go to https://github.com/ and sign up for a free account.
+
+
+STEP 2: UPLOAD YOUR PROJECT TO GITHUB
+--------------------------------------
+If you haven't uploaded your code to GitHub yet, the easiest way without installing Git is:
+1. Go to https://github.com/ and click the "+" icon (top right) -> "New repository".
+2. Name it something like "vidyashine-website". You can make it Private or Public.
+3. Do NOT check "Add a README file". Click "Create repository".
+4. On the next screen, click the link that says "uploading an existing file".
+5. Open your local "vidyashine" project folder on your computer.
+6. Select ALL files and folders EXCEPT the "node_modules" and "dist" folders.
+   Drag and drop them into the GitHub upload area in your browser.
+7. Scroll down to the bottom and click "Commit changes".
+8. Your code is now safely backed up on GitHub!
+
+
+STEP 3: DEPLOY ON CLOUDFLARE PAGES
+-----------------------------------
+1. Go to https://dash.cloudflare.com/sign-up and create a free Cloudflare account (or log in).
+2. Once logged into the dashboard, click on "Workers & Pages" in the left sidebar.
+3. Click the blue "Create application" button, then select the "Pages" tab.
+4. Click "Connect to Git".
+5. Cloudflare will ask you to connect your GitHub account. Authorize Cloudflare to access your GitHub repositories.
+6. Select your "vidyashine-website" repository from the list and click "Begin setup".
+
+
+STEP 4: CONFIGURE BUILD SETTINGS
+---------------------------------
+On the "Set up builds and deployments" page, enter the following settings exactly:
+
+1. Project name: (You can leave it as default or change it, e.g., vidyashine)
+2. Production branch: main (or master, whatever is default)
+3. Framework preset: Select "Vite" from the dropdown menu.
+   (If Vite isn't there, select "None" and proceed below)
+4. Build command: `npm run build`
+5. Build output directory: `dist`
+
+
+STEP 5: ADD ENVIRONMENT VARIABLES (IMPORTANT!)
+-----------------------------------------------
+Your website needs certain hidden keys to function properly (like the booking form).
+Before clicking deploy, scroll down and click on "Environment variables (advanced)".
+
+Add the following variables by clicking "Add variable":
+
+Variable 1:
+- Variable name: `VITE_WEB3FORMS_ACCESS_KEY`
+- Value: (Paste your Web3Forms access key here)
+
+Variable 2:
+- Variable name: `VITE_SUPPORT_EMAIL`
+- Value: (Paste your support email here, e.g., your-email@example.com)
+
+
+STEP 6: DEPLOY
+---------------
+1. Click the "Save and Deploy" button.
+2. Cloudflare will now build your website. You will see a live terminal logging the process.
+3. Wait about 1-2 minutes. Once finished, you will see a success message and a link to your live website! (e.g., https://vidyashine.pages.dev)
+
+
+UPDATING YOUR WEBSITE LATER
+----------------------------
+Whenever you want to make changes to your live site:
+1. Edit the files on your computer and test them locally.
+2. Go to your repository on GitHub (https://github.com/YOUR_USERNAME/vidyashine-website).
+3. Click "Add file" -> "Upload files".
+4. Drag and drop the modified files into the upload area.
+5. Click "Commit changes".
+6. Cloudflare is smart! It automatically detects the new commit on GitHub and will rebuild and update your live site within minutes without you needing to do anything else.
+
+
+CUSTOM DOMAIN (Optional)
+-------------------------
+To change the generic `.pages.dev` link to your own domain (e.g., www.vidyashineacademy.com):
+1. In your Cloudflare Pages dashboard for this project, go to the "Custom Domains" tab.
+2. Click "Set up a custom domain".
+3. Enter your domain name and follow Cloudflare's instructions to update your DNS settings with your domain registrar (GoDaddy, Namecheap, etc.).
+4. Cloudflare provides free, automatic SSL (HTTPS) for your custom domain.

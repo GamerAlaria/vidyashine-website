@@ -1,0 +1,80 @@
+=====================================================
+  HOW TO RUN THE WEBSITE LOCALLY
+=====================================================
+
+PREREQUISITES
+-------------
+1. Download and install Node.js (version 18 or later) from:
+   https://nodejs.org/
+
+   To check if you already have it, open Command Prompt and type:
+   node --version
+
+
+ONE-TIME SETUP
+--------------
+1. INSTALL DEPENDENCIES
+   Open Command Prompt in the project folder and run:
+   
+   npm install
+
+   This creates a "node_modules" folder with all required packages.
+
+---
+
+Alternate install--
+
+Run the batch file namely("start_vidyashine")
+this will automatically create the dependencies.
+
+---
+
+2. CREATE YOUR ENVIRONMENT FILE
+   - Find the file called ".env.example" in the project root
+   - Make a copy of it and rename the copy to ".env"
+   - Open ".env" in any text editor and replace the placeholder values:
+
+     VITE_WEB3FORMS_ACCESS_KEY=YOUR_WEB3FORMS_ACCESS_KEY_HERE
+     VITE_SUPPORT_EMAIL=YOUR_SUPPORT_EMAIL_HERE
+
+   How to get your Web3Forms key:
+     a. Go to https://web3forms.com/
+     b. Enter your email address
+     c. You will receive a free access key — paste it in place of YOUR_WEB3FORMS_ACCESS_KEY_HERE
+
+3. UPDATE YOUR CONTACT INFORMATION
+   Open the file "src/App.jsx" in any code editor and search for
+   these placeholders. Replace them with your real information:
+
+   YOUR_PHONE_NUMBER            --> Your actual phone number (appears 3 times)
+   your-privacy-email@example.com  --> Your privacy contact email
+   your-support-email@example.com  --> Your support contact email
+   your-email@example.com          --> Your fallback support email
+
+
+RUNNING THE WEBSITE
+-------------------
+OPTION A: Using the Batch File (Easiest — Windows Only)
+   Double-click "Start_Vidyashine.bat"
+   It will automatically install dependencies (if needed) and start the server.
+   Your browser should open to the website.
+
+OPTION B: Manual Command
+   Open Command Prompt in the project folder and run:
+   
+   npm run dev
+
+   Then open your browser and go to:
+   http://localhost:5173
+
+
+STOPPING THE SERVER
+-------------------
+Press Ctrl + C in the Command Prompt window where the server is running.
+
+
+NOTES
+-----
+- You only need to do the "One-Time Setup" once.
+- After that, just run "Start_Vidyashine.bat" or "npm run dev" each time.
+- If you change anything in the code, the browser will auto-refresh.

@@ -1,0 +1,22 @@
+
+d:\Projects\#1 Vidyashine website\Project #1 [Vidyashine - Website]\src\App.jsx
+    1:46  error  'useLayoutEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  354:32  error  'onOpenCancelModal' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  379:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  377 |   // Close mobile menu on route change
+  378 |   useEffect(() => {
+> 379 |     setMobileMenuOpen(false);
+      |     ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  380 |   }, [location.pathname]);
+  381 |
+  382 |   const navLinks = [  react-hooks/set-state-in-effect
+
+✖ 3 problems (3 errors, 0 warnings)
+
